@@ -1,5 +1,8 @@
 extends ../shell.pug
 
+block assets
+	script(type="text/javascript" src="payment.js")
+
 block seo
 	title payment
 	meta(name="description" content="payment")
@@ -8,3 +11,11 @@ block content
 
 	h1 payment
 
+	form(id="get-quote" action="payment" method="post")
+
+		input(type="text" name="firstname")
+		input(type="text" name="lastname")
+		input(type="text" name="country")
+		input(type="email" name="email")
+
+		button(type="submit") Submit form!

@@ -1,4 +1,7 @@
 /.idea/
 /node_modules/
 
+!/server/db/index.js
+/server/db
+
 /npm-debug.log
