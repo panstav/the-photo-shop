@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const compression = require('compression');
 
 const getQuote = require('./get-quote');
 
@@ -11,6 +12,8 @@ module.exports = initServer;
 function initServer(){
 
 	const server = express();
+
+	if (process.env.NODE_ENV === 'production') server.use(compression());
 
 	// serve static pages with pretty urls
 	server.get('/', (req, res) => res.sendFile('index.html', { root: 'public' }));
