@@ -1,8 +1,26 @@
+require('../awesomeplete');
+
 const util = require('../util');
+const countries = require('../countries');
 
 util.onReady(() => {
+	setCountriesAutoComplete();
 	document.getElementsByTagName('form')[0].addEventListener('submit', handleFormSubmission);
 });
+
+function setCountriesAutoComplete(){
+	new Awesomplete(document.getElementById('country'), { list: countries });
+	new Awesomplete(document.getElementById('email'), {
+		list: [ 'gmail.com', 'yahoo.com', 'hotmail.com' ],
+		filter: (text, input) => {
+			if (input.indexOf('@') === -1) return false;
+			return text.indexOf(input.substr(input.indexOf('@')+1)) > -1;
+		},
+		replace: function(text){
+			this.input.value = this.input.value.substr(0, this.input.value.indexOf('@')+1) + text.value;
+		}
+	});
+}
 
 function handleFormSubmission(event){
 	event.preventDefault();

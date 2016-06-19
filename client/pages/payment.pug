@@ -2,20 +2,42 @@ extends ../shell.pug
 
 block assets
 	script(type="text/javascript" src="payment.js")
+	link(rel="stylesheet" href="payment.css")
 
 block seo
-	title payment
-	meta(name="description" content="payment")
+	title Payment
+	meta(name="description" content="Payment")
 
 block content
 
-	h1 payment
+	.hero
+		.section
+			h1 Payment
 
-	form(id="get-quote" action="payment" method="post")
+	.row
+		.section
 
-		input(type="text" name="firstname")
-		input(type="text" name="lastname")
-		input(type="text" name="country")
-		input(type="email" name="email")
+			form(id="get-quote" action="payment" method="post")
 
-		button(type="submit") Submit form!
+				.row.full-width-forms.padded
+					.col-1-2
+						label(for="firstname") First Name
+						input(id="firstname" type="text" name="firstname")
+
+						label(for="lastname") Last Name
+						input(id="lastname" type="text" name="lastname")
+
+					.col-1-2
+						label(for="country") Country
+						input(id="country" type="text" name="country")
+
+						label(for="email") Email
+						input(id="email" type="email" name="email")
+						if (!locals.isProduction)
+							span.dev
+								strong Development
+								|: No confirmation email will be sent. Enter any email address here.
+
+				.row.padded
+					.col-1
+						button.btn.large(type="submit") Submit form!

@@ -59,11 +59,9 @@ function forEachElem(identifier, parent, fn){
 	// resolve to an iterate-able list of elements
 	// identifier would be either a string pointer to elements -> query by pointer
 	// or a list which could be directly iterated with forEach, or something that can transformed to
-	var elements = isString(identifier)
-		? parent.querySelectorAll(identifier)
-		: isArray(identifier)
-		               ? identifier
-		               : [].slice.call(identifier);
+	var elements = identifier;
+	if (isString(identifier)) elements = parent.querySelectorAll(identifier);
+	if (!isArray(identifier)) elements = [].slice.call(elements);
 
 	// pass the elements one by one to the given fn
 	elements.forEach(fn);
