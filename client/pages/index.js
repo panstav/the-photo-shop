@@ -1,4 +1,4 @@
-const intense = require('../intense');
+const intense = require('../vendor/intense');
 
 window.onload = () => {
 	intense(document.querySelectorAll('img'));

@@ -1,4 +1,4 @@
-require('../awesomeplete');
+require('../vendor/awesomeplete');
 
 const util = require('../util');
 const countries = require('../countries');
