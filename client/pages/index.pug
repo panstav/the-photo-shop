@@ -1,9 +1,40 @@
 extends ../shell.pug
 
+block assets
+	script(type="text/javascript" src="index.js")
+	link(rel="stylesheet" href="index.css")
+
 block seo
-	title index
-	meta(name="description" content="index")
+	title The Photo Shop
+	meta(name="description" content="The Photo Shop")
 
 block content
 
-	h1 index
+	.hero
+		.section
+			h1 The Photo Shop
+
+	.row
+		.section.padded
+			p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+	.row.padded
+		.section
+			img.col-1-3(src="/insta/001.jpg")
+			img.col-1-3(src="/insta/002.jpg")
+			img.col-1-3(src="/insta/003.jpg")
+	.row.padded
+		.section
+			img.col-1-3(src="/insta/004.jpg")
+			img.col-1-3(src="/insta/005.jpg")
+			img.col-1-3(src="/insta/006.jpg")
+	.row.padded
+		.section
+			img.col-1-3(src="/insta/007.jpg")
+			img.col-1-3(src="/insta/008.jpg")
+			img.col-1-3(src="/insta/009.jpg")
+	.row.padded
+		.section
+			img.col-1-3(src="/insta/010.jpg")
+			img.col-1-3(src="/insta/011.jpg")
+			img.col-1-3(src="/insta/012.jpg")
