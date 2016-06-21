@@ -1,4 +1,10 @@
-// Variables
+// Mixins
+
+@mixin clearFix
+	&:after
+		content: ""
+		display: table
+		clear: both
 
 // Fonts
 
@@ -115,6 +121,7 @@ $tablet:                       1080px !default
 $phablet:                      860px !default
 $phablet-handheld:             780px !default
 $handheld:                     667px !default
+$mobile:                       500px !default
 $handheld-portrait:            334px !default
 
 // Characters
