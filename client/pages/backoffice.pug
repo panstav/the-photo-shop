@@ -1,10 +1,30 @@
 extends ../shell.pug
 
+block assets
+	script(type="text/javascript" src="backoffice.js")
+	link(rel="stylesheet" href="backoffice.css")
+
 block seo
-	title backoffice
-	meta(name="description" content="backoffice")
+	title BackOffice
+	meta(name="description" content="BackOffice")
 
 block content
 
-	h1 backoffice
+	.hero
+		.section
+			h1 Back Office
 
+	.row
+		.section
+
+			table
+
+				thead
+					tr
+						th First Name
+						th Last Name
+						th Country
+						th Email
+						th Sent Confirmation?
+
+				tbody
