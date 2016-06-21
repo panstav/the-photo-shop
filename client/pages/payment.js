@@ -1,11 +1,12 @@
 require('../vendor/awesomeplete');
 
 const util = require('../util');
+const imageWants = require('../image-wants');
 const countries = require('../countries');
 
 util.onReady(() => {
 	setCountriesAutoComplete();
-	document.getElementsByTagName('form')[0].addEventListener('submit', handleFormSubmission);
+	handleFormSubmission();
 });
 
 function setCountriesAutoComplete(){
@@ -22,23 +23,24 @@ function setCountriesAutoComplete(){
 	});
 }
 
-function handleFormSubmission(event){
-	event.preventDefault();
+function handleFormSubmission(){
+	document.getElementsByTagName('form')[0].addEventListener('submit', event => {
+		event.preventDefault();
 
-	removeValidationPrompts();
+		removeValidationPrompts();
 
-	const values = {};
-	util.forEachElem('input', event.srcElement, input => {
-		values[input.name] = input.value;
-	});
+		const ajaxData = { cart: imageWants.get() };
+		util.forEachElem('input', event.srcElement, input => {
+			ajaxData[input.name] = input.value;
+		});
 
-	util.ajax('/get-quote', values, (err, res) => {
-		if (err){
-			if (err.status === 400 && 'validationPrompt' in err.response) return insertValidationPrompt(err.response.validationPrompt);
+		util.ajax('/get-quote', ajaxData, (err, res) => {
+			if (err){
+				if (err.status === 400 && 'validationPrompt' in err.response) return insertValidationPrompt(err.response.validationPrompt);
 
-			return console.error(err);
-		}
-
+				return console.error(err);
+			}
+		});
 
 	});
 }
