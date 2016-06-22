@@ -1,4 +1,10 @@
 table.streamed-db
 
-	tr:nth-child(2n)
-		background-color: #ECECEC
+	tr
+		padding-left: .5em
+		
+		@media (min-width: $handheld + 1px)
+			padding-left: 0
+
+		&:nth-child(2n)
+			background-color: #ECECEC
