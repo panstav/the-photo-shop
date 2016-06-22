@@ -2,7 +2,6 @@ extends ../shell.pug
 
 block assets
 	script(type="text/javascript" src="backoffice.js")
-	link(rel="stylesheet" href="backoffice.css")
 
 block seo
 	title BackOffice
@@ -10,14 +9,14 @@ block seo
 
 block content
 
-	.hero
+	.hero.blue
 		.section
 			h1 Back Office
 
 	.row
 		.section
 
-			table
+			table.streamed-db
 
 				thead
 					tr

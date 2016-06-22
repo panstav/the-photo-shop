@@ -13,15 +13,10 @@ gulp.task('sass', () => {
 
 	const postcssOptions = [autoprefixer({ browsers: ['last 3 versions', '> 5%', 'ie > 8'] })];
 
-	gulp.src('client/vendor/vital/index.sass')
+	return gulp.src('client/index.sass')
 		.pipe(plugins.sass(sassOptions))
 		.pipe(plugins.postcss(postcssOptions))
-		.pipe(plugins.rename(path => { path.basename = 'common'; }))
-		.pipe(gulp.dest('client'));
-
-	return gulp.src('client/pages/*.sass')
-		.pipe(plugins.sass(sassOptions))
-		.pipe(plugins.postcss(postcssOptions))
+		.pipe(plugins.rename(path => { path.basename = 'styles'; }))
 		.pipe(gulp.dest('public'));
 
 });
