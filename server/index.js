@@ -17,7 +17,7 @@ function initServer(){
 	if (process.env.NODE_ENV === 'production') server.use(compression());
 
 	// serve static pages with pretty urls
-	server.get('/', (req, res) => res.sendFile('index.html', { root: 'public' }));
+	server.get('/', (req, res) => res.sendFile('homepage.html', { root: 'public' }));
 	server.get('/payment', (req, res) => res.sendFile('payment.html', { root: 'public' }));
 	server.get('/backoffice', (req, res) => res.sendFile('backoffice.html', { root: 'public' }));
 

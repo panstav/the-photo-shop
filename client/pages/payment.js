@@ -1,13 +1,13 @@
-require('../vendor/awesomeplete');
+require('../vendor/awesomeplete/index');
 
-const util = require('../util');
-const imageWants = require('../image-wants');
-const countries = require('../countries');
+const util = require('./../scripts/util');
+const imageWants = require('./../scripts/image-wants');
+const countries = require('./../scripts/countries');
 
-util.onReady(() => {
+module.exports = () => {
 	setCountriesAutoComplete();
 	handleFormSubmission();
-});
+};
 
 function setCountriesAutoComplete(){
 	new Awesomplete(document.getElementById('country'), { list: countries });

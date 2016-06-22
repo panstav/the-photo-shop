@@ -23,10 +23,11 @@ gulp.task('sass', () => {
 
 gulp.task('js', () => {
 
-	return gulp.src('client/pages/*.js')
+	return gulp.src('client/index.js')
 		.pipe(plugins.browserify())
 		.pipe(plugins.babel({ presets: ['es2015'] }))
 		.pipe(plugins.if(isProduction, plugins.uglify()))
+		.pipe(plugins.rename(path => { path.basename = 'scripts'; }))
 		.pipe(gulp.dest('public'));
 
 });

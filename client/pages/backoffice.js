@@ -1,10 +1,10 @@
-const oboe = require('../vendor/oboe');
+const oboe = require('../vendor/oboe/index');
 
-const util = require('../util');
+const util = require('./../scripts/util');
 
-util.onReady(() => {
+module.exports = () => {
 	getDatabaseAndAppend();
-});
+};
 
 function getDatabaseAndAppend(){
 

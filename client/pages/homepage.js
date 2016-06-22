@@ -1,16 +1,16 @@
-const intense = require('../vendor/intense');
+const intense = require('../vendor/intense/index');
 
-const util = require('../util');
-const imageWants = require('../image-wants');
+const util = require('./../scripts/util');
+const imageWants = require('./../scripts/image-wants');
 
-window.onload = () => {
-	intense(document.querySelectorAll('img'));
-};
+module.exports = () => {
+	window.onload = () => {
+		intense(document.querySelectorAll('img'));
+	};
 
-util.onReady(() => {
 	applyCartIfPresent();
 	handleCheckboxToggle();
-});
+};
 
 function applyCartIfPresent(){
 	const cartData = imageWants.get();

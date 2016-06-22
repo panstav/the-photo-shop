@@ -1,8 +1,13 @@
 module.exports = {
+	router,
 	onReady,
 	ajax,
 	forEachElem
 };
+
+function router(path, controller){
+	if (location.pathname === path) controller();
+}
 
 function onReady(fn){
 
