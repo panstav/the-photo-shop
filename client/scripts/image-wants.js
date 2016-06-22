@@ -1,7 +1,8 @@
-module.exports = { get, set };
+module.exports = { get, set, clear };
 
 function get(){
-	return JSON.parse(localStorage.getItem('image-wants'));
+	const storedValue = JSON.parse(localStorage.getItem('image-wants'));
+	return storedValue && storedValue.length ? storedValue : null;
 }
 
 function set(imgID, toggle){
@@ -16,4 +17,8 @@ function set(imgID, toggle){
 	}
 
 	localStorage.setItem('image-wants', JSON.stringify(wants));
+}
+
+function clear(){
+	localStorage.setItem('image-wants', JSON.stringify([]));
 }

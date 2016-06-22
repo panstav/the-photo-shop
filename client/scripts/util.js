@@ -6,6 +6,8 @@ module.exports = {
 };
 
 function router(path, controller){
+	if (!controller) window.location = path;
+
 	if (location.pathname === path) controller();
 }
 

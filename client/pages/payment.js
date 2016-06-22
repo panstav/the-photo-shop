@@ -40,6 +40,9 @@ function handleFormSubmission(){
 
 				return console.error(err);
 			}
+			
+			imageWants.clear();
+			window.location = '/';
 		});
 
 	});
