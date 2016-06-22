@@ -21,7 +21,7 @@ function applyCartIfPresent(){
 		checkbox.checked = true;
 	});
 
-	showPaymentButton();
+	setPaymentButtonState(true);
 }
 
 function handleCheckboxToggle(){
@@ -29,11 +29,12 @@ function handleCheckboxToggle(){
 
 		//save choise
 		imageWants.set(event.srcElement.dataset.imgId, event.srcElement.checked);
-		
-		showPaymentButton();
+
+		// show payment button if cart has items, otherwise hide it
+		setPaymentButtonState(!!imageWants.get());
 	}));
 }
 
-function showPaymentButton(){
-	document.getElementsByTagName('footer')[0].dataset.active = true;
+function setPaymentButtonState(newState){
+	document.getElementsByTagName('footer')[0].dataset.active = newState;
 }
