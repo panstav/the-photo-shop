@@ -28,7 +28,7 @@ function handleCheckboxToggle(){
 	util.forEachElem('[type="checkbox"]', elem => elem.addEventListener('click', event => {
 
 		//save choise
-		imageWants.set(event.srcElement.dataset.imgId, event.srcElement.checked);
+		imageWants.set(event.target.dataset.imgId, event.target.checked);
 
 		// show payment button if cart has items, otherwise hide it
 		setPaymentButtonState(!!imageWants.get());

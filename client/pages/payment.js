@@ -30,7 +30,7 @@ function handleFormSubmission(){
 		removeValidationPrompts();
 
 		const ajaxData = { cart: imageWants.get() };
-		util.forEachElem('input', event.srcElement, input => {
+		util.forEachElem('input', event.target, input => {
 			ajaxData[input.name] = input.value;
 		});
 
