@@ -22,7 +22,7 @@ function getDatabaseAndAppend(){
 
 		ths.forEach(th => {
 			const td = document.createElement('td');
-			td.innerText = data[th] || '';
+			td.textContent = data[th] || '';
 			tr.appendChild(td);
 		});
 
