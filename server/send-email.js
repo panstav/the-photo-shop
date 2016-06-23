@@ -1,5 +1,5 @@
 const SparkPost = require('sparkpost');
-const emailer = new SparkPost(process.env.SPARKPOST_API_KEY);
+const emailer = getClientOrMock();
 
 module.exports = sendEmail;
 
@@ -29,4 +29,17 @@ function sendEmail(options){
 
 		emailer.transmissions.send({ transmissionBody }, err => err ? reject(err) : resolve());
 	});
+}
+
+function getClientOrMock(){
+
+	if (process.env.SPARKPOST_API_KEY) return new SparkPost(process.env.SPARKPOST_API_KEY);
+
+	return { transmissions: { send: mocker } };
+
+	function mocker(emailData, callback){
+		console.log('Mocking email submission:', emailData);
+		callback();
+	}
+
 }
