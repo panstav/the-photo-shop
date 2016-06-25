@@ -1,14 +1,28 @@
+const camelcase = require('camelcase');
+
 module.exports = {
 	router,
 	onReady,
 	ajax,
-	forEachElem
+	forEachElem,
+	capitalize
 };
 
 function router(path, controller){
 	if (!controller) window.location = path;
 
-	if (location.pathname === path) controller();
+	const query = getQueryData();
+
+	if (location.pathname === path) controller(query);
+
+	function getQueryData(){
+		return window.location.search.replace('?', '').split('&').reduce((accumulator, queryString) => {
+			const assignment = queryString.split('=');
+			accumulator[camelcase(assignment[0])] = assignment[1];
+			return accumulator;
+		}, {});
+	}
+
 }
 
 function onReady(fn){
@@ -81,4 +95,8 @@ function isString(str){
 function isArray(arr){
 	// this should work for ie9+
 	return {}.toString.call(arr) == '[object Array]';
+}
+
+function capitalize(str){
+	return str.charAt(0).toUpperCase() + str.slice(1);
 }

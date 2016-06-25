@@ -3,13 +3,14 @@ const intense = require('../vendor/intense/index');
 const util = require('./../scripts/util');
 const imageWants = require('./../scripts/image-wants');
 
-module.exports = () => {
+module.exports = query => {
 	window.onload = () => {
 		intense(document.querySelectorAll('img'));
 	};
 
 	applyCartIfPresent();
 	handleCheckboxToggle();
+	if ('cartSent' in query) showNoticeIfCartSubmitted(query.name);
 };
 
 function applyCartIfPresent(){
@@ -37,4 +38,12 @@ function handleCheckboxToggle(){
 
 function setPaymentButtonState(newState){
 	document.getElementsByTagName('footer')[0].dataset.active = newState;
+}
+
+function showNoticeIfCartSubmitted(name){
+
+	const confirmationString = `Thanks ${util.capitalize(name)}, you'll soon receive a confirmation email regarding your purchase.`;
+
+	document.getElementsByClassName('notice')[0].innerText = confirmationString;
+
 }

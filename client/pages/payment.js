@@ -42,7 +42,7 @@ function handleFormSubmission(){
 			}
 			
 			imageWants.clear();
-			window.location = '/';
+			window.location = `/?cart-sent&name=${ajaxData.firstname}`;
 		});
 
 	});
