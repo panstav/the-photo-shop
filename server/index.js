@@ -14,7 +14,7 @@ function initServer(){
 
 	const server = express();
 
-	if (process.env.NODE_ENV === 'production') server.use(compression());
+	server.use(compression());
 
 	// serve static pages with pretty urls
 	server.get('/', (req, res) => res.sendFile('homepage.html', { root: 'public' }));
