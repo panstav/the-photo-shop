@@ -1,7 +1,5 @@
 const oboe = require('../vendor/oboe/index');
 
-const util = require('./../scripts/util');
-
 module.exports = () => {
 	getDatabaseAndAppend();
 };

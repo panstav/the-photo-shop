@@ -1,8 +1,10 @@
-require('../vendor/awesomeplete/index');
+require('awesomplete');
 
-const util = require('./../scripts/util');
-const imageWants = require('./../scripts/image-wants');
-const countries = require('./../scripts/countries');
+const forEachElem = require('@panstav/for-each-elem');
+const ajax = require('@panstav/json-ajax');
+
+const imageWants = require('../scripts/image-wants');
+const countries = require('../scripts/countries');
 
 module.exports = () => {
 	setCountriesAutoComplete();
@@ -30,11 +32,11 @@ function handleFormSubmission(){
 		removeValidationPrompts();
 
 		const ajaxData = { cart: imageWants.get() };
-		util.forEachElem('input', event.target, input => {
+		forEachElem('input', event.target, input => {
 			ajaxData[input.name] = input.value;
 		});
 
-		util.ajax('/get-quote', ajaxData, (err, res) => {
+		ajax('/get-quote', ajaxData, (err, res) => {
 			if (err){
 				if (err.status === 400 && 'validationPrompt' in err.response) return insertValidationPrompt(err.response.validationPrompt);
 
@@ -65,5 +67,5 @@ function removeValidationPrompts(){
 
 	const prompts = document.getElementsByClassName('validation-prompt');
 
-	util.forEachElem(prompts, prompt => prompt.parentNode.removeChild(prompt));
+	forEachElem(prompts, prompt => prompt.parentNode.removeChild(prompt));
 }

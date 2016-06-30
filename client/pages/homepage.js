@@ -1,6 +1,6 @@
-const intense = require('../vendor/intense/index');
+const intense = require('@tholman/intense-images');
 
-const util = require('./../scripts/util');
+const forEachElem = require('@panstav/for-each-elem');
 const imageWants = require('./../scripts/image-wants');
 
 module.exports = query => {
@@ -26,7 +26,7 @@ function applyCartIfPresent(){
 }
 
 function handleCheckboxToggle(){
-	util.forEachElem('[type="checkbox"]', elem => elem.addEventListener('click', event => {
+	forEachElem('[type="checkbox"]', elem => elem.addEventListener('click', event => {
 
 		//save choise
 		imageWants.set(event.target.dataset.imgId, event.target.checked);
@@ -42,8 +42,12 @@ function setPaymentButtonState(newState){
 
 function showNoticeIfCartSubmitted(name){
 
-	const confirmationString = `Thanks ${util.capitalize(name)}, you'll soon receive a confirmation email regarding your purchase.`;
+	const confirmationString = `Thanks ${capitalize(name)}, you'll soon receive a confirmation email regarding your purchase.`;
 
 	document.getElementsByClassName('notice')[0].innerText = confirmationString;
+
+	function capitalize(str){
+		return str.charAt(0).toUpperCase() + str.slice(1);
+	}
 
 }
