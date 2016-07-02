@@ -3,15 +3,24 @@ const intense = require('@tholman/intense-images');
 const forEachElem = require('@panstav/for-each-elem');
 const imageWants = require('./../scripts/image-wants');
 
+const loader = {
+	start: setLoaderState.bind(null, true),
+	stop: setLoaderState.bind(null, false)
+};
+
 module.exports = query => {
 	window.onload = () => {
-		intense(document.querySelectorAll('img'));
+		intense(document.querySelectorAll('img'), { loader });
 	};
 
 	applyCartIfPresent();
 	handleCheckboxToggle();
 	if ('cartSent' in query) showNoticeIfCartSubmitted(query.name);
 };
+
+function setLoaderState(state){
+	document.querySelector('.overlay').dataset.active = state;
+}
 
 function applyCartIfPresent(){
 	const cartData = imageWants.get();

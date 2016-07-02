@@ -18,7 +18,7 @@
     "@panstav/is-heroku": "0.0.1",
     "@panstav/json-ajax": "0.0.1",
     "@panstav/on-ready": "0.0.1",
-    "@tholman/intense-images": "https://github.com/panstav/intense-images/tarball/ff063daebf811337d9c9998ead02062fc441a3b0",
+    "@tholman/intense-images": "https://github.com/panstav/intense-images/tarball/53fefe53148917563e9e91b54843b9cc5f7f06d0",
     "autoprefixer": "6.3.6",
     "awesomplete": "1.1.1",
     "babel-preset-es2015": "6.9.0",
